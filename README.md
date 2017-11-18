@@ -3,19 +3,25 @@
 Compile WebAssembly .wasm files to a commonjs module.
 
 ```js
-// TODO
+const wasmBuffer = fs.readFileSync(inp)
+const js = wasm2js(wasmBuffer)
 ```
 
-## Status
+## CLI
 
-Nix, Nada, Nichevo, Nothing --> go away!
+```sh
+wasm2js example.wasm -o example.js
+```
 
 ## Installation
 
     npm install wasm2js
 
-## [API](https://thlorenz.github.io/$(basename $PWD)
+## [API](https://thlorenz.github.io/wasm2js)
 
+## Kudos
+
+90% of this code was extracted from @mafintosh's [wat2js](https://github.com/mafintosh/wat2js).
 
 ## License
 
