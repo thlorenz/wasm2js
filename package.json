@@ -1,0 +1,33 @@
+{
+  "name": "wasm2js",
+  "version": "0.0.0",
+  "description": "Compile WebAssembly .wasm files to a commonjs module.",
+  "main": "wasm2js.js",
+  "bin": "./bin/wasm2js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/thlorenz/wasm2js.git"
+  },
+  "homepage": "https://github.com/thlorenz/wasm2js",
+  "dependencies": {
+    "minimist": "~1.2.0"
+  },
+  "keywords": [
+    "WebAssembly",
+    "wast",
+    "wat",
+    "wasm"
+  ],
+  "author": {
+    "name": "Thorsten Lorenz",
+    "email": "thlorenz@gmx.de",
+    "url": "http://thlorenz.com"
+  },
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/thlorenz/wasm2js/blob/master/LICENSE"
+  },
+  "engine": {
+    "node": ">=4"
+  }
+}

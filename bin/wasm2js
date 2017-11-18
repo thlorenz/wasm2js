@@ -1,0 +1,38 @@
+#!/usr/bin/env node
+
+process.title = 'wasm2js'
+
+const minimist = require('minimist')
+const fs = require('fs')
+const wasm2js = require('../')
+
+const argv = minimist(process.argv.slice(2), {
+  alias: {output: 'o', watch: 'w'},
+  boolean: ['w']
+})
+
+const inp = argv._[0]
+
+if (!inp) {
+  console.error(`
+Usage: wasm2js [input.wasm file] [options...]
+  --output, -o [output.js file]
+  --watch,  -w [recompile on input.wat change]
+  `.trim())
+  process.exit(1)
+}
+
+if (argv.watch && !argv.output) {
+  console.error('--watch requires --output')
+  process.exit(2)
+}
+
+if (argv.watch) fs.watch(inp, build)
+build()
+
+function build() {
+  const wasmBuffer = fs.readFileSync(inp)
+  const src = wasm2js(wasmBuffer)
+  if (argv.output) fs.writeFileSync(argv.output, src)
+  else process.stdout.write(src)
+}
