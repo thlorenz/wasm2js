@@ -1,5 +1,14 @@
 'use strict'
 
+/**
+ * Takes a `.wasm` binary and wraps it inside a commonJS module that can be required
+ * in Node.js and the browser.
+ *
+ * @name wasm2js
+ *
+ * @param {Buffer} wasmBuf a buffer of the .wasm code 
+ * @returns {String} the commonJS module code that wraps the wasm
+ */
 module.exports = function wasm2js(wasmBuf) {
   const wasm = wasmBuf.toString('base64')
 
