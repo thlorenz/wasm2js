@@ -73,5 +73,5 @@ module.exports = function wasm2js(wasmBuf) {
     function charCodeAt (c) {
       return c.charCodeAt(0)
     }
-    `.replace(/^ {6}/gm, '')
+    `.replace(/^ {4}/gm, '')
 }
