@@ -37,7 +37,7 @@ module.exports = function wasm2js(wasmBuf) {
       return mod
 
       function realloc (size) {
-        mod.exports.memory.grow(Math.ceil(Math.abs(size - mod.memory.length) / 65536))
+        mod.exports.memory.grow(Math.max(0, Math.ceil(Math.abs(size - mod.memory.length) / 65536)))
         mod.memory = new Uint8Array(mod.exports.memory.buffer)
       }
 
