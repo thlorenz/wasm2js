@@ -16,7 +16,7 @@ module.exports = function wasm2js(wasmBuf) {
     module.exports = loadWebAssembly
 
     loadWebAssembly.supported = typeof WebAssembly !== 'undefined'
-
+    var PAGE_SIZE = 65536
     function loadWebAssembly (opts) {
       if (!loadWebAssembly.supported) return null
 
@@ -37,7 +37,7 @@ module.exports = function wasm2js(wasmBuf) {
       return mod
 
       function realloc (size) {
-        mod.exports.memory.grow(Math.max(0, Math.ceil(Math.abs(size - mod.memory.length) / 65536)))
+        mod.exports.memory.grow(Math.ceil(Math.max(0, (size - mod.memory.byteLength) / PAGE_SIZE)))
         mod.memory = new Uint8Array(mod.exports.memory.buffer)
       }
 
